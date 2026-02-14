@@ -5,4 +5,4 @@ layout: single
 author_profile: true
 ---
 
-Hello!
+Interested in Math and Computer Science.
