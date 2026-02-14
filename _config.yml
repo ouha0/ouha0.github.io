@@ -113,10 +113,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "Hai Ou"
+  name             : "Hai"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Hi! I study Math and Computer Science :)"
-  location         : "Somewhere"
+  bio              : # "Hi! I study Math and Computer Science :)"
+  location         : "Australia"
   email            :
   links:
     - label: "Email"
