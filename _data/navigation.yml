@@ -4,6 +4,10 @@ main:
       url: /about/
     - title: "Reflections"
       url: /reflections/
+    - title: "Notes"
+      url: /notes/
+    - title: "Experiments"
+      url: /experiments/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
