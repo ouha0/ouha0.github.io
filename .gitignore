@@ -30,3 +30,6 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# Local Jekyll dev overrides — must not ship to GitHub Pages
+_config.dev.yml
