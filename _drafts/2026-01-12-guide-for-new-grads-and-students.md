@@ -8,25 +8,31 @@ tags:
   - advice
 ---
 
-The junior tech market is hard. Companies hire fewer entry-level engineers. AI has made everyone's application look the same — candidates feed identical job descriptions into the same prompts, and recruiters see a thousand clones. Great candidates still stand out, but for everyone else, the gap has collapsed: incompetent, average, and competent candidates all look competent on paper.
+The junior tech market is hard. Companies hire fewer entry-level engineers. AI has made everyone's application look the same — candidates feed identical job descriptions into the same prompts, and recruiters see a thousand clones. For most people, the visible difference has collapsed: incompetent, average, and competent candidates all look competent on paper.
 
-Companies want a specific type of person. Your goal — from resume to final interview — is to figure out who that person is and present yourself as them.
+Hiring managers want a specific type of person. Your goal — from resume to final interview — is to figure out who that person is and present yourself as them.
 
-The interview process is what it is, and you still have to get through it. Securing a job is two steps: get the interview, then pass the interview. Both require working backward from the job description — extract the technical and behavioral signals the employer values (distributed systems, AWS, Python, C++), and let those drive what you emphasize in every interaction.
+Securing a job is two steps: get the interview, then pass the interview. Both require working backward from the job description — extract the technical and behavioral signals the employer values (distributed systems, AWS, Python, C++), and let those drive what you emphasize in your interactions.
 
 The easiest path is converting an internship into a full-time offer. If you have that option, take it.
+
+**TL;DR:**
+- **Get the interview:** tailor your resume to the job description with specific evidence, not keyword stuffing. Get a referral before you apply, not after.
+- **Pass the interview:** ask clarifying questions, talk through your reasoning as you code, test your own code, and be fluent in one language.
+- **Prepare three to five behavioral stories** that show problem-solving, disagreement, and ambiguity. Use "I," not "we."
+- **Don't let LLMs trick you into feeling competent.** Reading their code isn't the same as writing your own.
 
 ## Getting the Interview
 
 Your resume is a marketing document. Its purpose is to signal — within ten seconds of skimming — that you're the candidate the recruiter is looking for and that you're worth a senior engineer's time.
 
-I'd recommend keeping it to one page. A recruiter processing a thousand applications spends fewer than ten seconds on each. They scan for university, standout projects, relevant experience, and recognizable company names. Your resume needs to catch their eye in that window, or it lands in the rejection pile.
+I'd recommend keeping it to one page. A recruiter processing a thousand applications spends fewer than ten seconds on each. They scan for university, standout projects, relevant experience, and recognizable company names. Your resume should catch their eye in that window, or it lands in the rejection pile.
 
-Read the job description before you tailor your resume, especially for roles you really want. If the posting asks for experience with React, TypeScript, and cloud infrastructure, your resume should reflect those skills — with specific evidence, not just keyword stuffing. Real project names, real outcomes, real tools. "Built a real-time dashboard using React and WebSockets that reduced incident response time by 40%" beats "proficient in JavaScript frameworks." The reason is simple: specific claims are believable. Vague ones aren't. 
+Read the job description before you tailor your resume, especially for roles you want. If the posting asks for experience with React, TypeScript, and cloud infrastructure, your resume should reflect those skills — with specific evidence, not just keyword stuffing. Real project names, real outcomes, real tools. "Built a real-time dashboard using React and WebSockets that reduced incident response time by 40%" beats "proficient in JavaScript frameworks." Specific claims are believable. Vague ones aren't.
 
-I'd also say don't over-index on GPA. Unless you're aiming for a PhD or grad school, time spent chasing a perfect transcript yields diminishing returns. A 3.5 GPA with two shipped side projects and an open source contribution paints a more complete picture than a 4.0 with nothing else. Interviewers want evidence you can build things, not that you can pass exams — those are different skills.
+Don't over-focus on GPA. Unless you're aiming for a PhD or grad school, time spent chasing a perfect transcript yields diminishing returns. A 3.5 GPA with two shipped side projects and an open source contribution paints a better picture than a 4.0 with nothing else. Interviewers want evidence you can build things and contribute quickly, not that you can pass exams.
 
-It's easy to tunnel-vision on coursework and miss how much real-world experience matters. Andrej Karpathy's [advice page](https://cs.stanford.edu/people/karpathy/advice.html) is worth reading — he argues coursework alone isn't enough, and that research, projects, and internships teach things classes can't.
+It's easy to tunnel-vision on coursework and miss how much real-world experience matters. Andrej Karpathy's [advice page](https://cs.stanford.edu/people/karpathy/advice.html) is worth reading on this.
 
 AI makes this harder. Everyone's resume reads the same because everyone used the same tool to write it. Specificity is your edge. Don't feed your resume into ChatGPT and call it done. The recruiter has already seen that resume — hundreds of times this week.
 
@@ -44,74 +50,15 @@ Cold outreach works when you lead with genuine interest. Don't open with "can yo
 
 Beyond referrals: apply early. Attend career events. Job hunting is a numbers game. Volume matters.
 
-## The Recruiter Phone Screen
-
-Not every company runs a process this formal. Much of what follows — recruiter screens, multi-round technicals, debriefs, hiring committees — is how larger companies hire. Smaller companies and startups often compress or skip most of this: a single call with a founder, a take-home, and a handshake isn't unusual. The core ideas are the same.
-
-Between the application and the technical rounds sits the recruiter phone screen. These vary — sometimes it's a quick idiot check ("can you write code, are you still interested, where are you based?"), sometimes it's a real gatekeeping call where communication, enthusiasm, and fit are all being evaluated. You won't always know which one you're in, so treat every call as the gatekeeping version.
-
-A few things worth doing:
-
-- **Know your resume cold.** They will ask about projects or experience you listed. Vague answers about your own work raise questions.
-- **Have a specific "why this company" answer.** "I like your product" is generic. Referencing a particular team, product decision, or engineering blog post lands much better.
-- **State your timeline honestly.** If you have other processes moving or competing offers, say so. That gives the recruiter something to work with on your behalf.
-- **Be careful with compensation numbers.** If they ask, give a wide range with the bottom end at or above what you'd actually accept. The numbers you state anchor the negotiation, so aim high.
-
-## Passing the Interview: The Signal Framework
-
-Here's what I've pieced together about how the interview process works from the interviewer's side. Interviewers collect signals — positive and negative — throughout every interaction with you. At the end, they assign a score, typically ranging from strong no hire, no hire, leaning no hire, leaning hire, hire, to strong hire. That score is the sum of the signals you gave them.
-
-Your goal throughout every interaction: maximize positive signals, eliminate negative ones.
-
-The second half matters more than you'd expect. At most companies, a hiring committee or debrief reviews all the interviewers' scores before making a decision. A single strong "no hire" from any round can override three "hire"s. Negative signals are asymmetrically expensive — which is why eliminating them is often worth more than chasing extra positives.
-
-It helps to think backward. If you know their marking criteria, you can prepare for exactly what they're evaluating. Interviewers score you on four dimensions: algorithms, communication, problem solving, and coding ability. Every action you take in the interview room either strengthens or weakens one of these scores.
-
-### The Signals That Matter
-
-**Be friendly and pleasant to work with.** Interviewers are evaluating whether they want to work with you eight hours a day. Borderline technical performances can swing on likability — "leaning hire" becomes "hire" when the candidate is pleasant to work with, and the reverse happens too. Arrogance, dismissiveness, and arguing with the interviewer's suggestions are disqualifying. Technical skill cannot compensate for a personality nobody wants on their team.
-
-**Ask clarifying questions before you code.** Most interview problems are deliberately ambiguous — constraints are omitted on purpose, edge cases left undefined. Jumping straight into code tells the interviewer you don't think before you build. This is a likely no hire, because it mirrors exactly the kind of engineer who causes problems on a real team.
-
-**Communicate your thinking as you work.** Talk through your approach before you code. Narrate your reasoning as you implement. I know this is unnatural — nobody talks while they code in real life — so practice it until it feels less strange. Silent coding is a black box: the interviewer can only evaluate the final output, and if it's wrong, they have no partial credit to give.
-
-**Test your code without being asked.** Choose your own inputs, state the expected output, and trace through line by line. This is what engineers do in practice. Demonstrating it unprompted shows the interviewer you take correctness seriously. Skipping it signals the opposite — and that's a concern interviewers carry into their scoring.
-
-**Understand the tradeoffs of your solution.** When you finish, explain why you chose this approach over alternatives. Discuss time and space complexity without being asked. Mention what you'd optimize if given more time. This signals depth — it tells the interviewer you aren't just pattern-matching from a problem set, but actually reasoning about the solution.
-
-**Follow the interviewer's lead.** If they nudge you in a direction, follow it — they've prepared questions along that path. If they hint that your approach has a flaw, don't defend it; reconsider it. If they ask a direct question, answer it directly. If they mention time, take the hint. This is how collaboration works on a real team, and that's what they're evaluating.
-
-**Be honest about what you don't know.** "I'm not sure, but here's how I'd reason about it" earns far more respect than a confident answer that falls apart under follow-up questions. A few honest "I don't know"s are neutral. But faking knowledge — stringing together jargon that doesn't mean anything — damages credibility across everything else you've said. The interviewer will probe anything on your resume. Don't put it there unless you can defend it.
-
-**Know your language cold.** If you can't create a hashmap or check whether a key exists in your language of choice, that's a severe negative signal — it suggests you don't write code regularly. Same with repeated syntax errors: forgetting semicolons, misusing brackets, confusing method names. Minor slip-ups from nerves are fine, especially if you catch and correct them. A pattern of them is not. Pick one language and know it well.
-
-**Ask insightful questions at the end.** Every interview closes with "do you have questions for me?" Asking nothing signals disinterest. Ask something that shows you've thought about the company, the team, or the problem space. This is also your chance to evaluate whether you'd actually want to work there.
-
-### Behavioral Interview
-
-Behaviorals are as important as technical interviews, and they get more important the more senior you are. Two things get tested: whether your experience aligns with the kind of candidate they want, and whether the claims on your resume hold up when you're asked to walk through them.
-
-Prepare stories in advance using STAR or a similar structured frame — context, problem, your approach and tradeoffs, impact. Three to five stories from school, internships, or projects will cover most of what gets asked: a time you solved a hard technical problem, a time you handled a disagreement, a time you dealt with ambiguity or failure. Practice telling them out loud. They should run two to three minutes, not ten, and the focus should be on "I," not "we."
-
-Larger companies also screen for cultural fit against a specific list of values they publish — Amazon's Leadership Principles, Canva's "Crazy Big Goals," Google's "Googleyness." The interviewer has a list of questions, and each question usually maps to one of those values. Before you answer, take a moment to identify which attribute the question is probing, then pick the story that best shows it. Researching the company's stated values ahead of time makes this much easier.
-
-### Other Notes on the Interview
-
-Leetcode hards in interviews are rare. Quant firms may differ, but at most companies, if you get a hard problem, the interviewer doesn't expect you to breeze through it. They want to see your process, your thinking, and how you handle difficulty. Staying calm and methodical on a problem you can't fully solve often produces a better signal than panicking through a correct answer.
-
-The tech interview is knowledge-based, leetcode-based, or both. Prepare accordingly.
-
-If you have a competing offer with a deadline, tell every recruiter you're actively talking to — immediately. Recruiters are on your side; they want you to sign. Competing offers give them ammo to fight for you internally — to push your file up the queue, expedite the interview schedule, or argue for a stronger offer.
-
 ## The LLM Trap: The Illusion of Competence
 
 Using LLMs for learning creates a dangerous illusion. You prompt a model. It outputs an elegant solution. You read it and nod. You feel like you've learned.
 
 You haven't.
 
-Reading code is passive. Writing code is active. They are different cognitive processes, and one does not substitute for the other. I think this is the single biggest trap for people preparing for interviews right now.
+Reading code is passive. Writing code is active. They are different cognitive processes, and one does not substitute for the other. I think this is the single biggest trap for people preparing for interviews, and for learning generally.
 
-> "If you think you know something and don't write it down, you only think you know it." — Leslie Lamport
+> "Writing is nature's way of letting you know how sloppy your thinking is." — Leslie Lamport (quoting Dick Guindon)
 
 The test is simple: can you write the solution from scratch, on a whiteboard, with no autocomplete? Can you explain the importance of every line? Can you discuss the tradeoffs — why this approach over that one, what breaks if you remove this condition? If not, you have a surface-level understanding that will collapse under interview pressure.
 
@@ -121,38 +68,77 @@ LLMs can accelerate your learning if you use them as thinking partners, not answ
 
 Another practical tip: practice in environments without autocomplete. Open a plain text editor, or even Microsoft Word, and solve problems there. Your interview environment won't have Copilot filling in syntax.
 
-One more practical tip: start fresh chat windows when conversations get long. Models hallucinate more with extended context, especially on niche leetcode problems. If you keep getting wrong answers, start over.
+One more practical tip: start fresh chat windows when conversations get long. If you keep getting wrong answers, start over.
 
-## Resources
+## The Recruiter Phone Screen
 
-Recruiter-provided preparation materials are the most important resource — study them first. They often telegraph exactly what you'll be tested on. Beyond that: [Neetcode](https://neetcode.io/) for leetcode preparation, and [A Life Engineered](https://www.youtube.com/@ALifeEngineered) (Steve) on YouTube for broader career perspective.
+Not every company runs this full process — startups often compress it to a call, a take-home, and a handshake — but the core ideas apply.
 
-## Summary
+Between the application and the technical rounds sits the recruiter phone screen. These vary — sometimes it's a quick idiot check ("can you write code, are you still interested, where are you based?"), sometimes it's a real gatekeeping call where communication, enthusiasm, and fit are all being evaluated. You won't always know which one you're in, so treat every call as the gatekeeping version.
 
-If you only focus on a few things, focus on these:
+Recruiters are mostly on your side. They're measured on the hires they close, so their incentive is to get you signed — though not always at the highest salary. Anything that strengthens your profile — competing offers, active late-stage processes elsewhere, changes in your timeline — is worth telling them. They can use it to fight for you internally.
 
-- **Practice easy and medium leetcode by topic, not randomly.** This proves you can actually code. Leetcode hards are rare; fluency on the common patterns matters more. Something like Blind 75 covers most of what you'll see.
+- **Know your resume cold.** They will ask about projects or experience you listed. Vague answers about your own work raise questions.
+- **Have a specific "why this company" answer.** "I like your product" is generic. Referencing a particular team, product decision, or engineering blog post lands much better.
+- **State your timeline honestly.** If you have other processes moving or competing offers, say so. That gives the recruiter something to work with on your behalf.
+- **Be careful with compensation numbers.** If they ask, give a wide range with the bottom end at or above what you'd actually accept. The numbers you state anchor the negotiation, so aim high.
 
-- **Practice communicating while you code, not separately.** Real jobs are collaborative. If you can't talk through your reasoning as you implement, the interviewer can't evaluate you — and they won't believe you'll communicate on the job either.
+## Passing the Interview: The Signal Framework
 
-- **Ask clarifying questions and test your own code.** Clarifying ensures you solve the right problem. Testing ensures you don't ship buggy software. These are easy positives to give.
+Here's what I've pieced together about how the interview process works from the interviewer's side. Interviewers collect signals — positive and negative — throughout every interaction with you. At the end, they assign a score, ranging from strong no hire, no hire, leaning no hire, leaning hire, hire, to strong hire. That score is the sum of the signals you give them.
 
-- **Prepare a few behavioral stories.** Have three to five stories from projects (school or personal) that show problem-solving, teamwork, or handling conflict. Use "I," not "we" — the focus should be on yourself.
+Your goal throughout every interaction: maximize positive signals, eliminate negative ones.
 
-- **Get a referral, or cold-message alumni on LinkedIn.** This is the easiest way past the initial resume filter. Even a stranger referral beats a cold application. Don't limit yourself to friends — alumni and people who've worked at the company are often willing to help.
+Eliminating negatives matters more than you'd expect. At larger companies, a hiring committee or debrief reviews all the interviewers' scores before making a decision. A single strong "no hire" from any round can override three "hire"s. Negative signals are asymmetrically expensive — which is why eliminating them is often worth more than chasing extra positives.
 
-- **Write a specific, tailored resume with at least one project that aligns with what the company wants.** This tells the recruiter you may be the ideal candidate and worth interviewing. Keep the format ATS-parseable — Overleaf is a good option — because a gorgeous resume that can't be parsed still gets rejected.
+It helps to think backward. If you know their marking criteria, you can prepare for exactly what they're evaluating. From my understanding, interviewers score you along four dimensions: algorithms, communication, problem solving, and coding ability. Every action you take in the interview room either strengthens or weakens one of these scores.
 
-## Closing
+### The Signals That Matter
 
-Don't put too much hope in any single company. Accept rejections and keep going.
+**Be friendly and pleasant to work with.** Interviewers are evaluating whether they want to work with you eight hours a day. Borderline technical performances can swing on likability — "leaning hire" becomes "hire" when the candidate is pleasant to work with, and the reverse happens too. Arrogance, dismissiveness, and arguing with the interviewer's suggestions sink candidates fast. Strong technical skill rarely compensates for a personality nobody wants on their team.
+
+**Ask clarifying questions before you code.** Most interview problems are deliberately ambiguous — interviewers omit constraints on purpose and leave edge cases undefined. Jumping straight into code tells the interviewer you don't think before you build. That's exactly the kind of engineer who causes problems on a real team — and interviewers score accordingly.
+
+**Communicate your thinking as you work.** Talk through your approach before you code. Narrate your reasoning as you implement. I know this is unnatural — nobody talks while they code in real life — so practice it until it feels less strange. Silent coding is a black box: the interviewer can only evaluate the final output, and if it's wrong, they have no partial credit to give.
+
+**Test your code without being asked.** Choose your own inputs, state the expected output, and trace through line by line. This is what engineers do in practice. Demonstrating it unprompted shows the interviewer you take correctness seriously. Skipping it signals the opposite — and that's a concern interviewers carry into their scoring.
+
+**Understand the tradeoffs of your solution.** When you finish, explain why you chose this approach over alternatives. Discuss time and space complexity without being asked. Mention what you'd optimize if given more time. It tells the interviewer you aren't just pattern-matching from a problem set, but reasoning about the solution.
+
+**Follow the interviewer's lead.** If they nudge you in a direction, follow it — they've prepared questions along that path. If they hint that your approach has a flaw, don't defend it; reconsider it. If they ask a direct question, answer it directly. If they mention time, take the hint. This is how collaboration works on a real team, and that's what they're evaluating.
+
+**Be honest about what you don't know.** "I'm not sure, but here's how I'd reason about it" earns far more respect than a confident answer that falls apart under follow-up questions. A few honest "I don't know"s are neutral. But faking knowledge — stringing together jargon that doesn't mean anything — damages credibility across everything else you've said. The interviewer will probe anything on your resume. Don't put it there unless you can defend it.
+
+**Know your language cold.** If you can't create a hashmap or check whether a key exists in your language of choice, that's a severe negative signal — it suggests you don't write code regularly. Same with repeated syntax errors: forgetting semicolons, misusing brackets, confusing method names. Minor slip-ups from nerves are fine, especially if you catch and correct them. A pattern of them is not. Pick one language and know it well.
+
+**Stay calm on hard problems.** Leetcode hards in interviews are rare. Quant firms may differ, but at most companies, if you get a hard problem, the interviewer doesn't expect you to breeze through it. They want to see your process, your thinking, and how you handle difficulty. Staying calm and methodical on a problem you can't fully solve often produces a better signal than panicking through a correct answer.
+
+**Ask insightful questions at the end.** Every interview closes with "do you have questions for me?" Asking nothing signals disinterest. Ask something that shows you've thought about the company, the team, or the problem space. This is also your chance to evaluate whether you'd actually want to work there.
+
+### Behavioral Interview
+
+Behaviorals matter as much as technical interviews, and they matter more as you grow senior. Two things get tested: whether your experience aligns with the kind of candidate they want, and whether the claims on your resume hold up when you're asked to walk through them.
+
+Prepare stories in advance using STAR or a similar structured frame — context, problem, your approach and tradeoffs, impact. Three to five stories from school, internships, or projects will cover most of what gets asked: a time you solved a hard technical problem, a time you handled a disagreement, a time you dealt with ambiguity or failure. Practice telling them out loud. They should run two to three minutes, not ten, and the focus should be on "I," not "we."
+
+Larger companies also screen for cultural fit against a specific list of values they publish — Amazon's Leadership Principles, Canva's "Crazy Big Goals," Google's "Googleyness." The interviewer has a list of questions, and each question usually maps to one of those values. Before you answer, take a moment to identify which attribute the question is probing, then pick the story that best shows it. Researching the company's stated values ahead of time makes this easier.
+
+## After the Interview
 
 Ask for feedback when you get rejected. Recruiters usually aren't allowed to give detailed feedback — legal reasons — but some will drop hints if you ask politely. *"Is there anything specific I should work on?"* or *"Was this close, or should I focus elsewhere?"* Even a vague answer tells you where to look — resume, technical prep, or behaviorals.
 
 Also keep your own notes. After each interview, write down the questions you got, what you answered well, what you bombed. Patterns emerge across interviews, and they usually tell you what to fix: if you're stalling out at the resume stage, fix the resume; at the first technical, fix your algorithms; at behavioral rounds, fix your stories.
 
-Sometimes the rejection isn't about you. Companies post roles during hiring freezes, fill them internally, or lose budget mid-process. You'll rarely know for sure — which is why taking rejections personally is usually wasted energy.
-
 If something isn't working, change it. If your resume isn't landing interviews, fix the resume — don't send the same one to 200 more companies.
 
-Every offer and every rejection is just a measurement of how closely the other side interpreted you as their ideal candidate.
+## Resources
+
+Recruiter-provided preparation materials are the most important resource — study them first. They often hint what you'll be tested on. Beyond that: [Neetcode](https://neetcode.io/) for leetcode preparation, and [A Life Engineered](https://www.youtube.com/@ALifeEngineered) (Steve) on YouTube for broader career perspective.
+
+## Closing
+
+Don't put too much hope in any single company. Accept rejections and keep going.
+
+Sometimes the rejection isn't about you. Companies post roles during hiring freezes, fill them internally, or lose budget mid-process. You'll rarely know for sure — which is why taking rejections personally is wasted energy.
+
+Every offer and every rejection is just a measurement of how closely the other side saw you as their ideal candidate.
