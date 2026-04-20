@@ -8,6 +8,8 @@ main:
       url: /notes/
     - title: "Experiments"
       url: /experiments/
+    - title: "Library"
+      url: /library/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"

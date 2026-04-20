@@ -1,8 +1,7 @@
 ---
 permalink: /about/
-title: "About Me"
+title: "About"
 layout: single
-author_profile: true
 ---
 
-Interested in Math and Computer Science.
+A small site for writing things down.

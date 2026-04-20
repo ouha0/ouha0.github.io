@@ -1,11 +1,10 @@
 ---
-title: "My Library"
+title: "Library"
 permalink: /library/
 layout: single
-author_profile: true
 ---
 
-Some useful resources
+Books I've found worth the time.
 
 ## Math
 

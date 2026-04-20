@@ -1,11 +1,10 @@
 ---
-title: "Reflections & Advice"
+title: "Reflections"
 layout: archive
 permalink: /reflections/
-author_profile: true
 ---
 
-Some thoughts on learning, career growth, and the industry.
+Longer pieces — thoughts on learning, work, and whatever else sticks around.
 
 {% for post in site.categories.reflections %}
   {% include archive-single.html %}

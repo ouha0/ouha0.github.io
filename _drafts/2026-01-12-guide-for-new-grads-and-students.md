@@ -34,21 +34,23 @@ Don't over-focus on GPA. Unless you're aiming for a PhD or grad school, time spe
 
 It's easy to tunnel-vision on coursework and miss how much real-world experience matters. Andrej Karpathy's [advice page](https://cs.stanford.edu/people/karpathy/advice.html) is worth reading on this.
 
-AI makes this harder. Everyone's resume reads the same because everyone used the same tool to write it. Specificity is your edge. Don't feed your resume into ChatGPT and call it done. The recruiter has already seen that resume — hundreds of times this week.
+AI makes this harder. Everyone's resume reads the same because everyone used the same tool to write it. Specificity is your edge. Don't feed your resume into ChatGPT and call it done. 
 
 Referrals matter, and not all referrals carry equal weight. In my experience, companies treat them in tiers:
 
-- **Stranger referral:** "I don't know this person, but here's their resume." Better than a cold application, but barely.
-- **Acquaintance referral:** "I know this person." Moves you past the initial screen.
+- **Stranger referral:** "I don't know this person, but here's their resume." Better than a cold application.
+- **Acquaintance referral:** "I know this person." Generally moves you past the initial screen.
 - **Strong referral:** "I can vouch for this person's ability." This is the one that changes outcomes.
 
 A strong referral from someone who can speak to your technical ability puts you in a different stage of the pipeline than a stranger clicking "refer" on LinkedIn. But even a stranger referral beats a cold application — don't be afraid to ask. Most people remember being in your position, and companies typically offer referral bonuses, so they have some incentive to help.
 
-Timing matters. A referral submitted *after* you've already applied often does nothing — you're already in the system with a status, sometimes already rejected. Get the referral in before or instead of a cold application, not as a follow-up.
+Timing matters on both sides. A referral submitted *after* you've already applied often does nothing — you're already in the system with a status, sometimes already rejected. Get the referral in before the application, not as a follow-up.
 
-Cold outreach works when you lead with genuine interest. Don't open with "can you refer me?" — that puts them in an awkward spot. Open with interest in the problem their team solves. Ask a specific question about their work. Both sides know you want a referral; the conversation should still be worth having on its own terms.
+Same logic for the application itself: apply fast when a posting goes live. Companies post roles when they actually need someone, and the first suitable candidates through the door often get the interview.
 
-Beyond referrals: apply early. Attend career events. Job hunting is a numbers game. Volume matters.
+Cold outreach works when you lead with genuine interest. Don't open with "can you refer me?" — that puts them in an awkward spot. Open with interest in the problem their team solves. Ask a specific question about their work. Both sides know you want a referral; the conversation should still be interesting.
+
+Beyond referrals: attend career events. Job hunting is a numbers game.
 
 ## The LLM Trap: The Illusion of Competence
 
@@ -62,11 +64,11 @@ Reading code is passive. Writing code is active. They are different cognitive pr
 
 The test is simple: can you write the solution from scratch, on a whiteboard, with no autocomplete? Can you explain the importance of every line? Can you discuss the tradeoffs — why this approach over that one, what breaks if you remove this condition? If not, you have a surface-level understanding that will collapse under interview pressure.
 
-Anthropic published research on this problem. Their study found that developers using AI coding assistants scored 17% lower on comprehension assessments than those who coded by hand. But here's the nuance: participants who used AI to ask follow-up questions, request explanations, and probe concepts — rather than just generate code — maintained strong comprehension. How you use the tool determines whether it helps or harms you.
+[Anthropic found](https://www.anthropic.com/research/AI-assistance-coding-skills) that developers who used AI to generate code scored lower on comprehension than those who coded by hand — but those who used AI to ask questions and probe concepts didn't. How you use the tool determines whether it helps or harms you.
 
-LLMs can accelerate your learning if you use them as thinking partners, not answer machines. Tell the model to act as your interviewer. Give it context about the role you're preparing for. Ask it to evaluate your code without writing the solution. Ask it to give minimal hints, framed as questions, when you're stuck. When you get the answer right, ask it to hit you with a hard follow-up. Adapt this to your style — the point is to use the tool in a way that forces you to think, not in a way that lets you skip thinking.
+LLMs can accelerate your learning if you use them as thinking partners, not answer machines. Tell the model to act as your interviewer. Give it context about the role you're preparing for. Ask it to evaluate your code without writing the solution. Ask it to give minimal hints, framed as questions, when you're stuck. When you get the answer right, ask it to hit you with a hard follow-up. The point is to use the tool in a way that forces you to think, not in a way that lets you skip thinking.
 
-Another practical tip: practice in environments without autocomplete. Open a plain text editor, or even Microsoft Word, and solve problems there. Your interview environment won't have Copilot filling in syntax.
+Another practical tip: practice in environments without autocomplete. Open a plain text editor, or even Microsoft Word, and solve problems there. Your interview environment won't have claude code and auto-complete.
 
 One more practical tip: start fresh chat windows when conversations get long. If you keep getting wrong answers, start over.
 
@@ -78,26 +80,26 @@ Between the application and the technical rounds sits the recruiter phone screen
 
 Recruiters are mostly on your side. They're measured on the hires they close, so their incentive is to get you signed — though not always at the highest salary. Anything that strengthens your profile — competing offers, active late-stage processes elsewhere, changes in your timeline — is worth telling them. They can use it to fight for you internally.
 
-- **Know your resume cold.** They will ask about projects or experience you listed. Vague answers about your own work raise questions.
+- **Know your resume.** They will ask about projects or experience you listed. Vague answers about your own work raise questions.
 - **Have a specific "why this company" answer.** "I like your product" is generic. Referencing a particular team, product decision, or engineering blog post lands much better.
 - **State your timeline honestly.** If you have other processes moving or competing offers, say so. That gives the recruiter something to work with on your behalf.
 - **Be careful with compensation numbers.** If they ask, give a wide range with the bottom end at or above what you'd actually accept. The numbers you state anchor the negotiation, so aim high.
 
 ## Passing the Interview: The Signal Framework
 
-Here's what I've pieced together about how the interview process works from the interviewer's side. Interviewers collect signals — positive and negative — throughout every interaction with you. At the end, they assign a score, ranging from strong no hire, no hire, leaning no hire, leaning hire, hire, to strong hire. That score is the sum of the signals you give them.
+Here's my read on the interviewer's side. Interviewers collect signals — positive and negative — throughout every interaction with you. At the end, they assign a score, ranging from strong no hire, no hire, leaning no hire, leaning hire, hire, to strong hire. That score is the sum of the signals you give them.
 
 Your goal throughout every interaction: maximize positive signals, eliminate negative ones.
 
-Eliminating negatives matters more than you'd expect. At larger companies, a hiring committee or debrief reviews all the interviewers' scores before making a decision. A single strong "no hire" from any round can override three "hire"s. Negative signals are asymmetrically expensive — which is why eliminating them is often worth more than chasing extra positives.
+Eliminating negatives matters more than you'd expect. At larger companies, a hiring committee or debrief reviews all the interviewers' scores before making a decision. A single strong "no hire" from any round can override three "hire"s. Negative signals are asymmetrically expensive — so eliminating them is often worth more than chasing extra positives.
 
 It helps to think backward. If you know their marking criteria, you can prepare for exactly what they're evaluating. From my understanding, interviewers score you along four dimensions: algorithms, communication, problem solving, and coding ability. Every action you take in the interview room either strengthens or weakens one of these scores.
 
 ### The Signals That Matter
 
-**Be friendly and pleasant to work with.** Interviewers are evaluating whether they want to work with you eight hours a day. Borderline technical performances can swing on likability — "leaning hire" becomes "hire" when the candidate is pleasant to work with, and the reverse happens too. Arrogance, dismissiveness, and arguing with the interviewer's suggestions sink candidates fast. Strong technical skill rarely compensates for a personality nobody wants on their team.
+**Be friendly and pleasant to work with.** Interviewers are evaluating whether they want to work with you eight hours a day. Borderline technical performances can swing on likability — "leaning hire" becomes "hire" when the candidate is pleasant to work with, and the reverse happens too. Arrogance, dismissiveness, and arguing with the interviewer's suggestions are instant red flags. Strong technical skill rarely compensates for a personality nobody wants on their team.
 
-**Ask clarifying questions before you code.** Most interview problems are deliberately ambiguous — interviewers omit constraints on purpose and leave edge cases undefined. Jumping straight into code tells the interviewer you don't think before you build. That's exactly the kind of engineer who causes problems on a real team — and interviewers score accordingly.
+**Ask clarifying questions before you code.** Most interview problems are deliberately ambiguous — interviewers omit constraints on purpose and leave edge cases undefined. Jumping straight into code tells the interviewer you don't think before you build. Interviewers score accordingly.
 
 **Communicate your thinking as you work.** Talk through your approach before you code. Narrate your reasoning as you implement. I know this is unnatural — nobody talks while they code in real life — so practice it until it feels less strange. Silent coding is a black box: the interviewer can only evaluate the final output, and if it's wrong, they have no partial credit to give.
 
@@ -140,5 +142,3 @@ Recruiter-provided preparation materials are the most important resource — stu
 Don't put too much hope in any single company. Accept rejections and keep going.
 
 Sometimes the rejection isn't about you. Companies post roles during hiring freezes, fill them internally, or lose budget mid-process. You'll rarely know for sure — which is why taking rejections personally is wasted energy.
-
-Every offer and every rejection is just a measurement of how closely the other side saw you as their ideal candidate.
