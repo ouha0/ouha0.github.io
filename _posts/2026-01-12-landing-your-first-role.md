@@ -32,7 +32,7 @@ Read the job description before you tailor your resume, especially for roles you
 
 Don't over-focus on GPA. Unless you're aiming for a PhD or grad school, time spent chasing a perfect transcript yields diminishing returns. A 3.5 GPA with two shipped side projects and an open source contribution paints a better picture than a 4.0 with nothing else. Interviewers want evidence you can build things and contribute quickly, not that you can pass exams.
 
-It's easy to tunnel-vision on coursework and miss how much real-world experience matters. Andrej Karpathy's [advice page](https://cs.stanford.edu/people/karpathy/advice.html) is worth reading on this.
+It's easy to tunnel-vision on coursework and miss how much real-world experience matters. Andrej Karpathy's [advice page](https://cs.stanford.edu/people/karpathy/advice.html#:~:text=Undergrads%20tend%20to%20have%20tunnel%20vision) is worth reading on this.
 
 Referrals matter, and not all referrals carry equal weight. In my experience, companies treat them in tiers:
 

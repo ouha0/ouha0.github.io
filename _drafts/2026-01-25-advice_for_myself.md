@@ -15,3 +15,4 @@ tags:
 - There are lots of forces pushing yourself towards paths that are laid by others. However, you should make informed decisions about what you want to do with your life
 - spend time with people you want to become
 
+(taken from Patrick Collison)
