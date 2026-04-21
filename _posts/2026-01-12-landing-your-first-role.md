@@ -26,7 +26,7 @@ The easiest path is converting an internship into a full-time offer. If you have
 
 Your resume is a marketing document. Its purpose is to signal — within ten seconds of skimming — that you're the candidate the recruiter is looking for and that you're worth a senior engineer's time.
 
-I'd recommend keeping it to one page. A recruiter processing a thousand applications spends fewer than fifteen seconds on each. They scan for university, standout projects, relevant experience, and recognizable company names. Your resume should catch their eye in that window, or it lands in the rejection pile.
+I'd recommend keeping it to one page. A recruiter processing a thousand applications spends fewer than fifteen seconds on each. They scan for university, standout projects, relevant experience, and recognizable company names. Your resume should catch their eye in that window, or it lands in the rejection pile. Keep the format plain — single column, standard fonts, no profile photo.
 
 Read the job description before you tailor your resume, especially for roles you want. If the posting asks for experience with React, TypeScript, and cloud infrastructure, your resume should reflect those skills — with specific evidence, not just keyword stuffing. Real project names, real outcomes, real tools. "Built a real-time dashboard using React and WebSockets that reduced incident response time by 40%" beats "proficient in JavaScript frameworks." Specific claims are believable. Vague ones aren't.
 
