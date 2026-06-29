@@ -12,7 +12,7 @@ tags:
 ## Introduction
 
 GPUs should be fast — that's the point. But getting one to run near its rated
-throughput is hard: a naive kernel often lands at *single-digit percentages* of
+throughput is hard: a naive kernel (a GPU program) often lands at *single-digit percentages* of
 what the hardware is capable of.
 
 Compute has outpaced memory bandwidth for decades, so a chip's arithmetic units
@@ -34,7 +34,7 @@ to compute-bound.
 [glossary](#glossary) at the end - refer back as you read.*
 
 
-## The Roofline
+## The Roofline Model
 
 The roofline model tells you a kernel's performance *upper bound* on a given machine —
 and, more importantly, why it's capped: by memory or by compute. Real kernels almost always land
@@ -46,7 +46,7 @@ The two axes:
   each byte feeds before it's thrown away.
 - Y-axis: attainable performance, in FLOP/s (floating-point operations per second).
 
-Every benchmark in this post runs on one card — an RTX 5070 Ti (Blackwell GB203) —
+Every benchmark in this post runs on one GPU — an NVIDIA RTX 5070 Ti —
 and the picture below is its roofline. The numbers behind it:
 
 | Spec | RTX 5070 Ti |
@@ -55,105 +55,80 @@ and the picture below is its roofline. The numbers behind it:
 | Memory bandwidth | 896 GB/s (GDDR7, 256-bit) |
 | Architecture | Blackwell GB203, 70 [SMs](#sm), 16 GB |
 
-(have the roofline picture here)
+![NVIDIA RTX 5070 Ti FP32 roofline — the 896 GB/s memory diagonal meets the 44 TFLOP/s compute roof at the ridge (≈ 49 FLOP/byte); the naive matmul sits at AI ≈ 0.25, far down the diagonal.](/assets/images/rtx5070ti-roofline.png)
 
-In one line: `attainable = min(peak compute, bandwidth × AI)` — whichever ceiling is
-lower wins. The flat top is peak compute — `lanes × clock × 2` for the fused
-multiply-add — and no arithmetic intensity, however high, beats it. The diagonal is
-the memory ceiling, `bandwidth × AI`: at low intensity even saturating memory leaves
-the ALUs starved, and performance climbs only as AI rises, until it meets the flat
-top. Where the two cross is the ridge — `peak FLOP/s ÷ peak bandwidth`, or
-`44 TFLOP/s ÷ 896 GB/s ≈ 49 FLOP/byte` on the RTX 5070 Ti: the least reuse a kernel
-needs to reach peak compute. (Both 49 and the 0.25 below are FP32 figures — 4 bytes
-per element; lower precision like FP4 packs more numbers per byte and runs on faster
-units, sliding both the point and the ridge.)
+*RTX 5070 Ti FP32 roofline, drawn on log–log axes — every gridline a 10× step, which is
+what turns the memory ceiling into a straight diagonal.*
 
-Where a kernel falls along the x-axis tells you which fix to reach for. Left of 49
-it is memory-bound, and the only lever is reuse: raise arithmetic intensity and you
-climb the diagonal. Right of 49 it is compute-bound, and more reuse buys nothing —
-you need faster math. The naive matmul lands at AI ≈ 0.25, about 200× left of the ridge
-and pinned to the bandwidth ceiling. The rest of this post is improving that.
+In one line: `attainable performance = min(peak compute, bandwidth × AI)` — the lower
+ceiling wins. The flat top is peak compute: every ALU issuing a fused multiply-add
+every cycle, and no arithmetic intensity, however high, beats it. The diagonal is the
+memory ceiling, `bandwidth × AI`: at low intensity even saturating memory leaves the
+ALUs starved — work arrives slower than they can consume it — so performance climbs
+only as AI rises, until it meets the flat top. Where they cross is the ridge:
+`peak FLOP/s ÷ peak bandwidth = 44 TFLOP/s ÷ 896 GB/s ≈ 49 FLOP/byte` on the
+RTX 5070 Ti — the least reuse a kernel needs to reach peak compute. (Both 49 and the
+0.25 below are FP32 figures — 4 bytes per element; lower precision packs more numbers
+per byte and runs on faster units, sliding both the point and the ridge right.)
 
-
-## Kernel case studies
-
-*How to read the numbers below:* clocks are locked, every result is a percentage of
-the card's peak rather than a raw speedup, and the baseline is cuBLAS (NVIDIA's
-hand-tuned library — the bar to beat), not my own naive kernel. Full rig and
-one-command reproduction are in the appendix.
-
-One measurement trap is worth seeing first. The roofline above is drawn against
-*DRAM* bandwidth — but at small sizes a kernel's data fits in L2 cache, giving it
-reuse the DRAM roofline never counted. It effectively sits right of where that
-roofline places it and looks faster than it is — you're timing the cache, not the
-896 GB/s DRAM. Push the size up and throughput falls off a cliff as the working set
-spills to DRAM:
-
-*(L2 → DRAM cliff plot)*
-
-Every benchmark here is taken past that cliff, at sizes large enough to saturate all
-70 SMs.
-
-<!-- Per-kernel template — every kernel follows the same 5-beat shape: -->
-- (a) Intuitive description of the technique
-- (b) The kernel (approach / code)
-- (c) Benchmark — size sweep, % of peak, point on the roofline
-- (d) **Intuitive bottleneck close — 4 beats:**
-  1. What's starving (binding resource, one sentence)
-  2. The one number that proves it (a profiler metric, not a vibe)
-  3. The physical picture (analogy)
-  4. Why the next fix targets exactly that
-  > Discipline: every intuition anchored to one measured number.
-- (e) Bridge to the next kernel
-
-### SGEMM — the ridge-crossing arc (the spine)
-- Technique arc: naive → shared-memory tiling → register tiling (1D → 2D) →
-  vectorized loads (float4).
-- Narrative spine: **arithmetic intensity climbs across 49; the bottleneck FLIPS
-  from memory to compute.** Naive ≈ 0.25 FLOP/byte (~200× left of ridge).
-- **Deep-idea callout at the register-tiling step — occupancy vs ILP is a tradeoff,
-  not a goal:** more registers/thread → fewer resident warps (less TLP) but more
-  independent work (more ILP). Show the version where pushing occupancy *hurts*.
-  (This backfire is the "what didn't work" centerpiece — keep it here, on the
-  critical path, not quarantined later.)
-- Anchor metrics: arithmetic intensity, % of FP32 peak, achieved occupancy.
-- Baseline: the cuBLAS gap (honest scoreboard).
-- Size: N ≥ 4096 (each matrix ~67 MB); sweep 1024 → 8192.
-
-### Reduction — memory-bound (the coda)
-- Short, ~2 beats: proves the same diagnostic loop finds a kernel that *stays* left
-  of the ridge — the method transfers even when the bottleneck doesn't move.
-- Technique arc: naive → coalesced → warp-shuffle (`__shfl`).
-- Anchor metrics: DRAM throughput %, sectors per request.
-- Analogy: full truck sent to fetch one box (uncoalesced). Tops out *on the slope*
-  at ~bandwidth peak — and that's correct, not a failure.
-- Size: hundreds of MB – 1 GB.
-
-<!-- Histogram (contention-bound) CUT — a third bottleneck class deflates the
-     memory→compute arc after the ridge-crossing climax. Candidate for a follow-up. -->
+Where a kernel falls on the x-axis tells you which fix to reach for. Left of the ridge
+it's memory-bound, and the lever is reuse: raise arithmetic intensity and climb the
+diagonal. Right of it, compute-bound — more reuse buys nothing; you need more FLOP/s
+(better ILP, the tensor cores, or fewer FLOPs). Naive matmul lands at AI ≈ 0.25, ~200×
+left of the ridge, against the bandwidth roof. The rest of this post walks it right.
 
 
-## What didn't work
-- The occupancy-hurts backfire now lives on the SGEMM critical path (register-tiling
-  step above) — don't repeat it here.
-- The speedup that didn't materialize.
-- Register spills (too much shared memory / too many registers → occupancy drop).
-- The cuBLAS gap I couldn't close, and why: tensor-core paths, hand-tuned PTX,
-  async copy I didn't implement.
+# GPU and CUDA basics
+- Before we dive into kernels, its important to have some background. Your CPU has maybe 8
+or 16 cores, and each one is very complex: deep caches, branch prediction ... - a hudge 
+transistor budget spent making a single thread finish as fast as possible. A GPU has a 
+different design philosophy. It spends that same budget on thousands of simple cores and 
+accepts that each one, alone, is *slow*. A CPU is a handful of elite generals; a GPU is a 
+massive army of basic soldiers.
+
+For most code, the elite generals win. But when you have the same operation to run across a
+a million data elements - add two vectors, multiple two matrices - the army wins, and it's not close.
+
+*The mental shift*, in one example. On a CPU you add two arrays with a loop: 
 
 
-## Closing — where it stops, what transfers
-- cuBLAS / CUTLASS exist; the point was understanding, not shipping a GEMM. Tensor
-  cores (5th-gen, FP4) are the next frontier — named, not benchmarked in this
-  CUDA-core post.
-- Kernel tuning is **hardware-specific**: the best tile sizes, register-blocking
-  factors, and occupancy targets depend on *this* card's SM / register / shared-memory
-  budget, and the ridge itself is per-card. It's why cuBLAS autotunes and ships
-  hundreds of variants — a kernel hand-tuned for one GPU rarely stays optimal on the
-  next. Near-peak performance takes a lot of tuning.
-- The loop that transfers, stated once: **profile → which bound? → fix → re-measure.**
-  Tiling, coalescing, privatization are just the moves; the loop is the method.
-  (Show one concrete transfer — e.g. attention — or cut the claim.)
+
+# Matrix Multiplications
+
+### The climb
+
+<!-- per rung: technique → what it does → benchmark (% peak + roofline point).
+     bottleneck implicit, numbers = [[placeholder]]. -->
+
+#### 1. Naive (uncoalesced)
+- technique: one thread per output `C[i][j]`; loop k, read a row of A + a column of B from global memory.
+- does: no reuse — A read N times, B read N times; AI ≈ 0.25. Scattered loads waste each transaction.
+- benchmark: [[% peak]] — sits *below* the diagonal. (first benchmark → one-line L2→DRAM cliff aside: small N hides in L2; all sizes here are past the spill.)
+
+#### 2. Coalesced   [TODO — small kernel, reindex threads]
+- technique: map threads so a warp's 32 loads hit contiguous addresses.
+- does: same math, same AI — climbs *up* onto the bandwidth roof. The free lunch.
+- benchmark: [[% peak]] — on the diagonal now, still left of ridge.
+
+#### 3. Shared-memory tiling
+- technique: each block loads a tile of A and B into shared memory once, reuses across its threads.
+- does: cuts DRAM traffic → AI rises → walk *right* toward the ridge. Still memory-bound.
+- benchmark: [[% peak]] — further right on the diagonal.
+
+#### 4. Register tiling   [TODO]
+- technique: each thread computes several outputs, operands in registers (1D → 2D).
+- does: AI rises again — and the obvious move (crank occupancy) BACKFIRES: more registers/thread → fewer warps (less TLP) but more independent work/thread (more ILP), net faster. ← conceptual peak.
+- benchmark: [[% peak]], [[achieved occupancy]] — crossing toward compute-bound.
+
+#### 5. Vectorized loads / float4   [TODO]
+- technique: wider loads (`float4`), fewer load instructions.
+- does: removes the last memory-side stall → lands compute-bound.
+- benchmark: [[% peak]] — right of the ridge.
+
+#### Landing — the gap to cuBLAS
+- compute-bound now, still [[X]]% under cuBLAS. why: tensor cores, hand-tuned PTX, async copy.
+- the loop that transfers: profile → which bound? → fix → re-measure.
+- tensor cores (FP16/FP4) = next frontier, named not benchmarked.
 
 
 ---
